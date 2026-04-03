@@ -112,6 +112,16 @@
 </head>
 <body>
     <nav>
+        {% if messages %}
+<div class="fixed top-24 right-8 z-[100] flex flex-col gap-3">
+    {% for message in messages %}
+    <div class="px-6 py-4 border-2 border-black bg-white shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] flex items-center gap-4 animate-bounce">
+        <div class="w-2 h-2 rounded-full {% if message.tags == 'error' %}bg-red-600{% else %}bg-[#0C6FBD]{% endif %}"></div>
+        <p class="text-xs font-black uppercase tracking-widest">{{ message }}</p>
+    </div>
+    {% endfor %}
+</div>
+{% endif %}
         <a href="/" class="logo">SANAA-SYNC</a>
         <div class="nav-links">
             <a href="{% url 'gig_list' %}">Gigs</a>
